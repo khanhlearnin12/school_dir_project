@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myschdirpro">
         <activity
-            android:name=".Timetable"
+            android:name=".timetable.Timetable"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
