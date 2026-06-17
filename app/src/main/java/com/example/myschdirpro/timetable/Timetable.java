@@ -1,6 +1,7 @@
 package com.example.myschdirpro.timetable;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myschdirpro.R;
 import com.example.myschdirpro.timetable.adapter.TimetableAdapter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,10 +25,54 @@ public class Timetable extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private TimetableAdapter adapter;
-
     private Map<String, List<Course>> timetableMap = new HashMap<>();
-
     private String currentDay = "Mon";
+
+    private void initData() {
+
+        timetableMap.put("Mon", Arrays.asList(
+                new Course("08:00", "MATH 101", "Room 302"),
+                new Course("10:00", "ECON 50", "Room 101"),
+                new Course("14:00", "GEOG 10", "Annex 2")
+        ));
+
+        timetableMap.put("Tue", Arrays.asList(
+                new Course("09:00", "CS 101", "Room 201"),
+                new Course("13:00", "Physics", "Lab 1")
+        ));
+
+        timetableMap.put("Wed", Arrays.asList(
+                new Course("08:00", "English", "Room 105")
+        ));
+    }
+
+    private void switchDay(String day) {
+
+        currentDay = day;
+
+        List<Course> list = timetableMap.get(day);
+
+        if (list == null) {
+            list = new ArrayList<>();
+        }
+
+        adapter.updateData(list);
+    }
+
+    private void setupDayButtons() {
+
+        Button mon = findViewById(R.id.btnMon);
+        Button tue = findViewById(R.id.btnTue);
+        Button wed = findViewById(R.id.btnWed);
+        Button thu = findViewById(R.id.btnThu);
+        Button fri = findViewById(R.id.btnFri);
+
+        mon.setOnClickListener(v -> switchDay("Mon"));
+        tue.setOnClickListener(v -> switchDay("Tue"));
+        wed.setOnClickListener(v -> switchDay("Wed"));
+        thu.setOnClickListener(v -> switchDay("Thu"));
+        fri.setOnClickListener(v -> switchDay("Fri"));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

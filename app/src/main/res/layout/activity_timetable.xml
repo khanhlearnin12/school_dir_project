@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,179 +8,221 @@
     android:background="@drawable/gongshanloublur"
     tools:context=".timetable.Timetable">
 
-
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <!-- 上方導覽列 -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
 
-
-        <!-- 上方導覽列 -->
-        <com.google.android.material.appbar.AppBarLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent">
+            android:layout_height="56dp"
+            android:background="@color/white"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@color/white"
-                app:contentInsetStart="0dp"
-                app:contentInsetStartWithNavigation="0dp">
+                android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <!-- Menu Button -->
+                <ImageButton
+                    android:id="@+id/btn_timetable_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/arrow_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:tint="@color/red" />
+
+                <!-- Title -->
+                <TextView
+                    android:id="@+id/tv_timetable_Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Timetable"
+                    app:layout_constraintStart_toEndOf="@id/btn_timetable_back"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="12dp"/>
+
+                <!-- Right Icons Container -->
+                <LinearLayout
+                    android:id="@+id/rightIcons"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
-                    <!-- Menu Button -->
+                    <!-- Edit -->
                     <ImageButton
-                        android:id="@+id/btnMenu"
+                        android:id="@+id/btn_timetable_Edit"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/edit"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/red" />
+
+                    <!-- Account -->
+                    <ImageButton
+                        android:id="@+id/btn_timetable_Account"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@android:color/transparent"
                         android:src="@drawable/ic_account_circle"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:tint="@color/black" />
+                        app:tint="@color/red" />
+                </LinearLayout>
 
-                    <!-- Title -->
-                    <TextView
-                        android:id="@+id/tvTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Timetable"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        app:layout_constraintStart_toEndOf="@id/btnMenu"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginStart="12dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <!-- Right Icons Container -->
-                    <LinearLayout
-                        android:id="@+id/rightIcons"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent">
+        </com.google.android.material.appbar.MaterialToolbar>
 
-                        <!-- Edit -->
-                        <ImageButton
-                            android:id="@+id/btnEdit"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/ic_account_circle"
-                            android:layout_marginEnd="8dp"
-                            app:tint="@color/black" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-                        <!-- Account -->
-                        <ImageButton
-                            android:id="@+id/btnAccount"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/ic_account_circle"
-                            app:tint="@color/black" />
-                    </LinearLayout>
+    <!-- 中間內容 -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/contentScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="140dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:fillViewport="true">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.appbar.MaterialToolbar>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <!-- 星期切換 -->
-        <HorizontalScrollView
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:scrollbars="none">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <!-- 星期切換 -->
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
                 app:cardBackgroundColor="@android:color/white">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:layout_margin="8dp"
+                    android:scrollbars="none">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnMon"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:text="Mon"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="#8B0000"/>
+                        android:orientation="horizontal"
+                        android:padding="4dp">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnTue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:text="Tue"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="#8B0000"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="Mon"
+                            android:textColor="@android:color/white"
+                            app:backgroundTint="#8B0000"/>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnWed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:text="Wed"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="#8B0000"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="Tue"
+                            android:textColor="@android:color/white"
+                            app:backgroundTint="#8B0000"/>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnThu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:text="Thu"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="#8B0000"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnWed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="Wed"
+                            android:textColor="@android:color/white"
+                            app:backgroundTint="#8B0000"/>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnFri"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:text="Fri"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="#8B0000"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnThu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="Thu"
+                            android:textColor="@android:color/white"
+                            app:backgroundTint="#8B0000"/>
 
-                </LinearLayout>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="Fri"
+                            android:textColor="@android:color/white"
+                            app:backgroundTint="#8B0000"/>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
 
             </androidx.cardview.widget.CardView>
 
-        </HorizontalScrollView>
+            <!-- 課表 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/white">
 
-        <!-- 課表 -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSchedule"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSchedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 下方導覽列 -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@android:color/white">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/red"
+            app:itemTextColor="@color/red"
+            android:layout_gravity="bottom"
+            app:menu="@menu/bottom_nav_menu"/>
 
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
