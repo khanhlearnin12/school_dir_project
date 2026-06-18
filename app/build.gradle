@@ -38,10 +38,13 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.material
     implementation libs.recyclerview
+    implementation libs.room.common.jvm
+    implementation libs.room.runtime
     testImplementation libs.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ext.junit
 
     implementation libs.cardview
+    annotationProcessor libs.room.compiler
 
 }

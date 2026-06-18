@@ -9,42 +9,82 @@
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/tv_course_Time"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="08:00"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <TextView
-                android:id="@+id/tv_course_CourseName"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_course_Time"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="MATH 101"
+                android:text="08:00"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/tv_course_Room"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Room 302"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_course_CourseName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MATH 101"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_course_Room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room 302"/>
+
+                <!-- 編輯模式 -->
+                <EditText
+                    android:id="@+id/et_course_Time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="時間"
+                    android:visibility="gone"/>
+
+                <!-- 編輯模式 -->
+                <EditText
+                    android:id="@+id/et_course_CourseName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="課程名稱"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/et_course_Room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="教室"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/btn_course_delete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="8dp"
+            android:background="@color/red"
+            android:src="@drawable/delete"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
 
 </androidx.cardview.widget.CardView>

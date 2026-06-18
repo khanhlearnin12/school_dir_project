@@ -28,7 +28,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp">
 
-                <!-- Menu Button -->
+                <!-- Back Button -->
                 <ImageButton
                     android:id="@+id/btn_timetable_back"
                     android:layout_width="40dp"
@@ -195,6 +195,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp"/>
+
+                <!-- 新增課表欄位 -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabAddCourse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:src="@drawable/delete"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/red"
+                    app:tint="@android:color/white"
+                    android:layout_gravity="bottom|end"/>
 
             </com.google.android.material.card.MaterialCardView>
 
