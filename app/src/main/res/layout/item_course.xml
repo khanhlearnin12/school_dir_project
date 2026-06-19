@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
@@ -24,6 +25,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="08:00"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -38,6 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MATH 101"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -45,7 +48,8 @@
                     android:id="@+id/tv_course_Room"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Room 302"/>
+                    android:text="Room 302"
+                    android:textColor="@color/black"/>
 
                 <!-- 編輯模式 -->
                 <EditText
@@ -80,7 +84,6 @@
             android:layout_height="32dp"
             android:layout_alignParentEnd="true"
             android:layout_margin="8dp"
-            android:background="@color/red"
             android:src="@drawable/delete"
             android:visibility="gone"/>
 

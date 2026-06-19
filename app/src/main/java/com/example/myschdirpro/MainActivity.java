@@ -9,6 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.myschdirpro.homepage.Homepage;
 import com.example.myschdirpro.timetable.Timetable;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         //測試timetable是否正常運作
-        Intent intent = new Intent(this, Timetable.class);
+        Intent intent = new Intent(this, Homepage.class);
         startActivity(intent);
     }
 }

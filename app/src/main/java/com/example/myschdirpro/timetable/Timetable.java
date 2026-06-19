@@ -1,6 +1,7 @@
 package com.example.myschdirpro.timetable;
 
 import android.content.Intent;
+import android.media.RouteListingPreference;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,10 +17,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myschdirpro.R;
+import com.example.myschdirpro.homepage.Homepage;
 import com.example.myschdirpro.timetable.adapter.TimetableAdapter;
 import com.example.myschdirpro.timetable.data.AppDatabase;
 import com.example.myschdirpro.timetable.data.CourseDao;
 import com.example.myschdirpro.timetable.data.CourseEntity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -103,6 +106,8 @@ public class Timetable extends AppCompatActivity {
 
         // 返回上一頁
         btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(Timetable.this, Homepage.class);
+            startActivity(intent);
             finish();
         });
 
@@ -122,6 +127,37 @@ public class Timetable extends AppCompatActivity {
 
                 saveCurrentDayData();
             }
+        });
+    }
+
+    private void setBottomBar(){
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
+
+        bottomNav.setOnItemSelectedListener(item -> {
+
+            int id = item.getItemId();
+
+            if (id == R.id.nav_home) {
+                startActivity(new Intent(this, Homepage.class));
+                return true;
+            }
+
+            if (id == R.id.nav_timetable) {
+                startActivity(new Intent(this, Timetable.class));
+                return true;
+            }
+
+            /*if (id == R.id.nav_map) {
+                startActivity(new Intent(this, CampusMap.class));
+                return true;
+            }*/
+
+            /*if (id == R.id.nav_messages) {
+                startActivity(new Intent(this, Messages.class));
+                return true;
+            }*/
+
+            return false;
         });
     }
 
@@ -192,6 +228,8 @@ public class Timetable extends AppCompatActivity {
         setupDayButtons();
 
         setTopBar();
+
+        setBottomBar();
 
         setCourseBtn();
 

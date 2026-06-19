@@ -9,23 +9,86 @@
     tools:context=".homepage.Homepage">
 
     <!-- Top Bar -->
+    <!-- TopBar -->
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/topAppBar"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="#FFFFFF"
-        app:title="Feng Chia University"
-        app:titleTextColor="#610000"
+        android:background="@color/white"
+        android:elevation="4dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <!-- account -->
+            <ImageButton
+                android:id="@+id/btn_timetable_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_account_circle"
+                app:tint="@color/red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tv_timetable_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feng Chia University"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toEndOf="@id/btn_timetable_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <!-- fcu_ -->
+            <ImageButton
+                android:id="@+id/btn_timetable_Edit"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/captive_portal"
+                android:layout_marginEnd="8dp"
+                app:tint="@color/red"
+                app:layout_constraintEnd_toStartOf="@id/btn_timetable_Account"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <!-- info -->
+            <ImageButton
+                android:id="@+id/btn_timetable_Account"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/info"
+                app:tint="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <!-- Main Content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -41,14 +104,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Good Morning,"
-                android:textColor="#666666"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome, 阮文A"
+                android:text="Welcome, User"
                 android:textSize="28sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginBottom="20dp"/>
 
             <!-- Quick Access -->
@@ -56,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quick Access"
+                android:textColor="@color/black"
                 android:textStyle="bold"/>
 
             <HorizontalScrollView
@@ -68,11 +133,25 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/item_quick_access"/>
-                    <include layout="@layout/item_quick_access"/>
-                    <include layout="@layout/item_quick_access"/>
-                    <include layout="@layout/item_quick_access"/>
-                    <include layout="@layout/item_quick_access"/>
+                    <include
+                        android:id="@+id/quickMap"
+                        layout="@layout/item_quick_access"/>
+
+                    <include
+                        android:id="@+id/quickTimetable"
+                        layout="@layout/item_quick_access"/>
+
+                    <include
+                        android:id="@+id/quickGrade"
+                        layout="@layout/item_quick_access"/>
+
+                    <include
+                        android:id="@+id/quickMessage"
+                        layout="@layout/item_quick_access"/>
+
+                    <include
+                        android:id="@+id/quickSetting"
+                        layout="@layout/item_quick_access"/>
 
                 </LinearLayout>
 
@@ -84,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:text="Next Class"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
             <androidx.cardview.widget.CardView
@@ -96,12 +176,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@color/white"
                     android:padding="16dp">
 
                     <View
                         android:layout_width="4dp"
                         android:layout_height="match_parent"
-                        android:background="#610000"/>
+                        android:background="@color/red"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -114,11 +195,13 @@
                             android:text="Calculus (MATH 101)"
                             android:textStyle="bold"
                             android:textSize="16sp"
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                         <TextView
                             android:text="08:00 - 10:00 • Room 302"
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
@@ -134,6 +217,7 @@
                 android:layout_height="wrap_content"
                 android:text="Recent Messages"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
             <androidx.cardview.widget.CardView
@@ -145,6 +229,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="vertical">
 
                     <include layout="@layout/item_message"/>
@@ -165,6 +250,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Campus Map"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"/>
 
@@ -177,18 +263,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/delete"/>
+                        android:src="@drawable/map"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Find Classroom"
+                        android:backgroundTint="@color/red"
+                        android:textColor="@color/white"
                         android:layout_margin="12dp"/>
 
                 </LinearLayout>
@@ -204,7 +293,11 @@
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/red"
+        app:itemTextColor="@color/red"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
